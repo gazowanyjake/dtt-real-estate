@@ -1,6 +1,7 @@
 import 'package:dtt/model/home_model.dart';
 import 'package:dtt/screens/home_info_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeTile extends StatelessWidget {
   const HomeTile({
@@ -11,13 +12,37 @@ class HomeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String bedIcon = 'assets/icons/ic_bed.svg';
+    const String bathIcon = 'assets/icons/ic_bath.svg';
+    const String layersIcon = 'assets/icons/ic_layers.svg';
+    const String locationIcon = 'assets/icons/ic_location.svg';
+    final Widget bedWidget = SvgPicture.asset(
+      bedIcon,
+      height: 18,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+    );
+    final Widget bathWidget = SvgPicture.asset(
+      bathIcon,
+      height: 18,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+    );
+    final Widget layersWidget = SvgPicture.asset(
+      layersIcon,
+      height: 18,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+    );
+    final Widget locationWidget = SvgPicture.asset(
+      locationIcon,
+      height: 18,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+    );
     return GestureDetector(
       onTap: () => Navigator.of(context)
           .pushNamed(HomeInfoScreen.routeName, arguments: home),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Container(
-          padding: EdgeInsets.only(left: 16,top: 8,bottom: 8),
+          padding: EdgeInsets.only(left: 16, top: 8, bottom: 8),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(12),
@@ -40,14 +65,12 @@ class HomeTile extends StatelessWidget {
                     Radius.circular(12),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(
-                        home.image),
+                    image: NetworkImage(home.image),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               const SizedBox(width: 24),
-              // Details
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -64,41 +87,31 @@ class HomeTile extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.bed, size: 16, color: Colors.grey),
+                          bedWidget,
                           SizedBox(width: 4),
-                          Text(home.bedrooms.toString(),
-                              style: Theme.of(context).textTheme.bodyMedium,),
-                          SizedBox(width: 16),
-                          Icon(
-                            Icons.bathtub,
-                            size: 16,
-                            color: Colors.grey,
+                          Text(
+                            home.bedrooms.toString(),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
+                          SizedBox(width: 16),
+                          bathWidget,
                           SizedBox(width: 4),
                           Text(
                             home.bathrooms.toString(),
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           SizedBox(width: 16),
-                          Icon(
-                            Icons.square_foot,
-                            size: 16,
-                            color: Colors.grey,
-                          ),
+                          layersWidget,
                           SizedBox(width: 4),
                           Text(
                             home.size.toString(),
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           SizedBox(width: 16),
-                          Icon(
-                            Icons.location_on,
-                            size: 16,
-                            color: Colors.grey,
-                          ),
+                          locationWidget,
                           SizedBox(width: 4),
                           Text(
-                            home.distance.toString(),
+                            '${home.distance} km',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],

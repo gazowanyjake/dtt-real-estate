@@ -1,6 +1,4 @@
 import 'package:dtt/home_bloc/bloc/home_bloc.dart';
-import 'package:dtt/screens/tabs_screen.dart';
-import 'package:dtt/widget/home_tile.dart';
 import 'package:dtt/widget/homes_list.dart';
 import 'package:dtt/widget/search_home_bar.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    // Search bar
                     SearchHomeBar(),
-                    // Property list
                     state.isSearching && state.searchList.isEmpty
                         ? Container(
                             padding: EdgeInsets.only(
@@ -53,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Image.asset(
-                                  'assets/images/search_state_empty.png', // Replace with your actual asset path
+                                  'assets/images/search_state_empty.png',
                                 ),
                                 Text(
                                   'No results found!',

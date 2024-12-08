@@ -2,7 +2,6 @@ import 'package:dtt/home_bloc/bloc/home_bloc.dart';
 import 'package:dtt/widget/custom_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'home_bloc/service/home_service.dart';
-import 'widget/custom_theme_data.dart';
 import 'package:dtt/screens/home_info_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dtt/screens/tabs_screen.dart';
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: TabsScreen(),
       theme: CustomThemeData.themeData,
       home: BlocProvider(
       create: (context) => HomeBloc(HomeService()),

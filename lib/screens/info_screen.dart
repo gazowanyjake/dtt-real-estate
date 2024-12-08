@@ -35,7 +35,7 @@ class InfoScreen extends StatelessWidget {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/images/dtt_banner.png', // Replace with your actual asset path
+                      'assets/images/dtt_banner.png',
                       width: 150,
                       height: 150,
                     ),
@@ -52,7 +52,6 @@ class InfoScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            // Implement link navigation if needed
                           },
                           child: Text(
                             'd-tt.nl',

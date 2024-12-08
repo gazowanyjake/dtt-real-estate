@@ -1,6 +1,7 @@
 import 'package:dtt/home_bloc/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchHomeBar extends StatefulWidget {
   const SearchHomeBar({
@@ -33,6 +34,17 @@ class _SearchHomeBarState extends State<SearchHomeBar> {
   final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+      const String searchIcon = 'assets/icons/ic_search.svg';
+    const String closeIcon = 'assets/icons/ic_close.svg';
+    final Widget searchWidget = SvgPicture.asset(
+      searchIcon,
+      height: 30,
+      color: Theme.of(context).textTheme.headlineSmall!.color,
+    );
+    final Widget closeWidget = SvgPicture.asset(
+      closeIcon,
+      height: 30,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: TextField(
@@ -48,16 +60,13 @@ class _SearchHomeBarState extends State<SearchHomeBar> {
           hintStyle: Theme.of(context).textTheme.headlineSmall,
           suffixIcon: _isSearching
               ? IconButton(
-                  icon: const Icon(Icons.clear),
+                  icon: closeWidget,
                   onPressed: () {
                     _searchController.clear();
                     context.read<HomeBloc>().add(StopSearchingEvent());
                   },
                 )
-              : Icon(
-                  Icons.search,
-                  color: Theme.of(context).textTheme.headlineSmall!.color,
-                ),
+              : searchWidget,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,

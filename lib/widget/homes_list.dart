@@ -10,7 +10,7 @@ class HomesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: list.length, // Number of items
+        itemCount: list.length,
         itemBuilder: (context, index) {
           return HomeTile(
             home: list[index],
