@@ -24,7 +24,6 @@ class HomeService implements IHomeService {
       final list = jsonList
           .map((json) => HomeModel.fromJson(json, userPosition))
           .toList();
-      print(list[0].image);
       return right(list);
     } catch (error) {
       print('getHomes error: $error');

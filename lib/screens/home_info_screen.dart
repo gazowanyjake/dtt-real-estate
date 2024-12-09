@@ -1,6 +1,6 @@
 import 'package:dtt/model/home_model.dart';
+import 'package:dtt/widget/icons_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:latlong2/latlong.dart';
 import '../widget/map_widge.dart';
 
@@ -10,30 +10,6 @@ class HomeInfoScreen extends StatelessWidget {
   const HomeInfoScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    const String bedIcon = 'assets/icons/ic_bed.svg';
-    const String bathIcon = 'assets/icons/ic_bath.svg';
-    const String layersIcon = 'assets/icons/ic_layers.svg';
-    const String locationIcon = 'assets/icons/ic_location.svg';
-    final Widget bedWidget = SvgPicture.asset(
-      bedIcon,
-      height: 18,
-      color: Theme.of(context).textTheme.bodyMedium!.color,
-    );
-    final Widget bathWidget = SvgPicture.asset(
-      bathIcon,
-      height: 18,
-      color: Theme.of(context).textTheme.bodyMedium!.color,
-    );
-    final Widget layersWidget = SvgPicture.asset(
-      layersIcon,
-      height: 18,
-      color: Theme.of(context).textTheme.bodyMedium!.color,
-    );
-    final Widget locationWidget = SvgPicture.asset(
-      locationIcon,
-      height: 18,
-      color: Theme.of(context).textTheme.bodyMedium!.color,
-    );
     final HomeModel home =
         ModalRoute.of(context)!.settings.arguments as HomeModel;
     return Scaffold(
@@ -90,29 +66,7 @@ class HomeInfoScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(width: 4),
-                      Row(
-                        children: [
-                          bedWidget,
-                          SizedBox(width: 2),
-                          Text(home.bedrooms.toString(),
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          SizedBox(width: 10),
-                          bathWidget,
-                          SizedBox(width: 2),
-                          Text(home.bathrooms.toString(),
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          SizedBox(width: 10),
-                          layersWidget,
-                          SizedBox(width: 2),
-                          Text(home.size.toString(),
-                              style: Theme.of(context).textTheme.bodyMedium),
-                          SizedBox(width: 10),
-                          locationWidget,
-                          SizedBox(width: 2),
-                          Text('${home.distance} km',
-                              style: Theme.of(context).textTheme.bodyMedium),
-                        ],
-                      )
+                      IconsRow(home: home),
                     ],
                   ),
                   SizedBox(height: 32),

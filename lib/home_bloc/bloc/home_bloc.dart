@@ -38,7 +38,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> _onGetUserPosition(
       GetUserPositionEvent event, Emitter<HomeState> emit) async {
     final result = await service.getLocation();
-    print(result);
     emit(
       state.copyWith(
         userPosition: result.getRightOrThrow(),
