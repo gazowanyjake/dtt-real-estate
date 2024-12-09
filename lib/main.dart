@@ -6,7 +6,6 @@ import 'package:dtt/screens/home_info_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dtt/screens/tabs_screen.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -16,15 +15,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: CustomThemeData.themeData,
-      home: BlocProvider(
+    return BlocProvider(
       create: (context) => HomeBloc(HomeService()),
-      child:  TabsScreen(),
-    ),
-      routes: {
-        HomeInfoScreen.routeName: (context) => HomeInfoScreen(),
-      },
+      child: MaterialApp(
+        theme: CustomThemeData.themeData,
+        home: TabsScreen(),
+        routes: {
+          HomeInfoScreen.routeName: (context) => HomeInfoScreen(),
+        },
+      ),
     );
   }
 }

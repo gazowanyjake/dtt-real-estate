@@ -1,4 +1,3 @@
-
 import 'package:latlong2/latlong.dart';
 
 class HomeModel {
@@ -14,7 +13,7 @@ class HomeModel {
   final double latitude;
   final double longitude;
   final DateTime createdDate;
-  double? distance;
+  String? distance;
 
   HomeModel({
     required this.id,
@@ -40,7 +39,7 @@ class HomeModel {
 
     return HomeModel(
       id: json['id'],
-      image: 'https://intern.d-tt.nl${json['image']}' ,
+      image: 'https://intern.d-tt.nl${json['image']}',
       price: json['price'],
       bedrooms: json['bedrooms'],
       bathrooms: json['bathrooms'],
@@ -51,14 +50,16 @@ class HomeModel {
       latitude: (json['latitude'] as num).toDouble(),
       longitude: (json['longitude'] as num).toDouble(),
       createdDate: DateTime.parse(json['createdDate']),
-      distance: distance.as(
-        LengthUnit.Kilometer,
-        userPosition,
-        LatLng(
-          (json['latitude'] as num).toDouble(),
-          (json['longitude'] as num).toDouble(),
-        ),
-      ),
+      distance: userPosition == LatLng(0, 0)
+          ? '-'
+          : distance.as(
+              LengthUnit.Kilometer,
+              userPosition,
+              LatLng(
+                (json['latitude'] as num).toDouble(),
+                (json['longitude'] as num).toDouble(),
+              ),
+            ).toString(),
     );
   }
 }

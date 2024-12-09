@@ -9,8 +9,23 @@ class GetUserPositionEvent extends HomeEvent {}
 
 class SearchHomeEvent extends HomeEvent {
   SearchHomeEvent({
-    required this.city,
+    required this.input,
   });
-  final String city;
+  final String input;
 }
+
 class StopSearchingEvent extends HomeEvent {}
+
+class LaunchUrlEvent extends HomeEvent {
+  LaunchUrlEvent({
+    required this.url,
+  });
+  final String url;
+}
+
+class LaunchMapEvent extends HomeEvent {
+  LaunchMapEvent({
+    required this.location,
+  });
+  final LatLng location;
+}

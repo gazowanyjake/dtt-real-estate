@@ -24,6 +24,7 @@ class HomeService implements IHomeService {
       final list = jsonList
           .map((json) => HomeModel.fromJson(json, userPosition))
           .toList();
+      list.sort((a,b) => a.price.compareTo(b.price));
       return right(list);
     } catch (error) {
       print('getHomes error: $error');

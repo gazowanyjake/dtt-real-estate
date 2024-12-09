@@ -51,7 +51,7 @@ class _SearchHomeBarState extends State<SearchHomeBar> {
         style: Theme.of(context).textTheme.titleSmall,
         onChanged: (value) => context.read<HomeBloc>().add(
               SearchHomeEvent(
-                city: _searchController.text,
+                input: _searchController.text,
               ),
             ),
         controller: _searchController,

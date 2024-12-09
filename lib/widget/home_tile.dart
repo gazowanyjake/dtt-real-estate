@@ -58,7 +58,7 @@ class HomeTile extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 4),
-                      Text(home.city,
+                      Text('${home.zip} ${home.city}',
                           style: Theme.of(context).textTheme.bodyLarge),
                       const SizedBox(height: 8),
                       IconsRow(
