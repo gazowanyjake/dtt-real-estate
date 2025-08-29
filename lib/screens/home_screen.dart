@@ -12,12 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    context.read<HomeBloc>().add(GetUserPositionEvent());
-    context.read<HomeBloc>().add(GetHomesEvent());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
